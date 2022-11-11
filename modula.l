@@ -21,7 +21,7 @@ char *strnncpy(char *dst, const char *src, const int n);
 
 string \"[^\"\n]*\"
 char '.'
-int [1-9][0-9]*
+int ([1-9][0-9]*)|0
 float (([0-9]+\.[0-9]*)|([0-9]*\.[0-9]+))([eE](\+|-)?[0-9]{1,2})?
 ident [A-Za-z][A-Za-z0-9]*
 
@@ -49,6 +49,7 @@ ident [A-Za-z][A-Za-z0-9]*
 
  /* słowa kluczowe */
 
+PROCEDURE return process_token(yytext, "KW_PROCEDURE", "", KW_PROCEDURE);
 AND return process_token(yytext, "KW_AND", "", KW_AND);
 BEGIN return process_token(yytext, "KW_BEGIN", "", KW_BEGIN);
 CONST return process_token(yytext, "KW_CONST", "", KW_CONST);
@@ -94,6 +95,7 @@ DOWNTO return process_token(yytext, "KW_DOWNTO", "", KW_DOWNTO);
 "<"= return process_token(yytext, "LE", "", LE);
 ">"= return process_token(yytext, "GE", "", GE);
 "<>" return process_token(yytext, "NEQ", "", NEQ);
+".." return process_token(yytext, "RANGE", "", RANGE);
 
  /* komentarze (na warunkach poczatkowych) */
 
