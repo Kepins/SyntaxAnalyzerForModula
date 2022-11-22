@@ -361,7 +361,7 @@ FACTOR:
 	| PROCEDURE_CALL
 	| '(' EXPR ')'
 	| KW_NOT FACTOR
-	| NEG FACTOR
+	| '-' FACTOR %prec NEG
 ;
 
 /* FOR_STATEMENT */
